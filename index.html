@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PREACHERS | Officiel Hjemmeside</title>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#08030d;color:#fff;font-family:Arial,sans-serif}
+nav{position:fixed;z-index:99;top:0;left:0;right:0;padding:15px 5%;display:flex;justify-content:space-between;align-items:center;background:#07020cdd;backdrop-filter:blur(12px);border-bottom:1px solid #a33cff55}.logo{font-weight:900;letter-spacing:3px}.logo span{color:#bd63ff}nav a{color:#eee;text-decoration:none;margin-left:18px;font-size:13px;font-weight:bold}
+.hero{min-height:100vh;padding:90px 6% 40px;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(#05000844,#050008c9),url("background.png") center/cover fixed}.hero h1{font-size:clamp(55px,12vw,150px);margin:20px 0 10px;line-height:.85;letter-spacing:6px;text-shadow:0 0 20px #9b2fff,0 0 55px #7b15bd}.hero p{font-weight:bold;letter-spacing:6px}.pill{display:inline-block;border:1px solid #b14cff;border-radius:30px;padding:9px 18px;background:#180722aa;letter-spacing:3px;font-size:12px}
+.btn,button{display:inline-block;border:1px solid #b14cff;border-radius:8px;padding:13px 20px;background:#7d22b8;color:white;font-weight:bold;cursor:pointer;text-decoration:none}.btn{margin:20px 5px}.btn.secondary{background:#160820cc}
+section{padding:90px 7%;background:#0b0610}section:nth-of-type(even){background:#100714}.container{max-width:1150px;margin:auto}h2{font-size:38px;color:#cf87ff;margin:0 0 12px}.lead{color:#ccc;line-height:1.7}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:28px}.card{background:#12091acc;border:1px solid #b14cff44;border-radius:14px;padding:22px}.card img{width:100%;height:220px;object-fit:cover;border-radius:10px}.card p{color:#bbb;line-height:1.6}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px;margin-top:25px}.gallery img{width:100%;height:230px;object-fit:cover;border-radius:12px;border:1px solid #b14cff55;cursor:pointer}
+form{display:grid;gap:12px;max-width:750px;margin-top:24px}input,textarea{width:100%;padding:13px;border:1px solid #b14cff55;border-radius:8px;background:#0c0610;color:white}textarea{min-height:120px}.notice{display:none;padding:12px;margin-top:12px;border-radius:8px;background:#17091e;border:1px solid #b14cff55}.ok{color:#8effad}.bad{color:#ff8e8e}
+#adminArea{display:none}.adminbar{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.danger{background:#8c1832}.app{border:1px solid #b14cff44;background:#12091a;border-radius:12px;padding:18px;margin:12px 0}.app button{margin:5px 5px 0 0}
+small{color:#999}footer{text-align:center;padding:30px;color:#888;background:#050207}@media(max-width:700px){nav .links{display:none}.hero{background-attachment:scroll}.hero p{letter-spacing:3px}}
+</style></head>
+<body>
+<nav><div class="logo">✝ <span>PREACHERS</span></div><div class="links"><a href="#om">OM OS</a><a href="#medlemmer">MEDLEMMER</a><a href="#galleri">GALLERI</a><a href="#ansog">ANSØG</a><a href="#adminLogin">ADMIN</a></div></nav>
+<header class="hero"><div><div class="pill">FAMILIE • LOYALITET • RESPEKT</div><h1>PREACHERS</h1><p>VELKOMMEN TIL VORES VERDEN</p><a class="btn" href="#om">LÆR OS AT KENDE</a><a class="btn secondary" href="#ansog">SEND ANSØGNING</a></div></header>
+<section id="om"><div class="container"><h2>OM PREACHERS</h2><p class="lead">PREACHERS er en FiveM/RP-gruppe med fokus på fællesskab, loyalitet, respekt og godt RP.</p></div></section>
+<section id="medlemmer"><div class="container"><h2>MEDLEMMER</h2><p class="lead">Her vises medlemmer, som administratoren har oprettet.</p><div id="members" class="grid"></div></div></section>
+<section id="galleri"><div class="container"><h2>GALLERI</h2><p class="lead">Her kan alle se billeder, som administratoren har lagt op.</p><div id="gallery" class="gallery"></div></div></section>
+<section id="ansog"><div class="container"><h2>ANSØG OM MEDLEMSKAB</h2><p class="lead">Ved godkendelse sender systemet automatisk en privat Discord-besked med jeres Discord-invitation.</p>
+<form id="applicationForm">
+<input name="name" placeholder="Dit navn" required><input name="discord" placeholder="Discord navn (valgfrit)" >
+<input name="discordId" placeholder="Discord User ID (påkrævet)" inputmode="numeric" pattern="[0-9]{17,20}" required>
+<input name="age" type="number" min="13" placeholder="Alder" required><input name="experience" placeholder="Tidligere RP-erfaring" required>
+<textarea name="why" placeholder="Hvorfor vil du gerne være med?" required></textarea><button>SEND ANSØGNING</button>
+</form><div id="appNotice" class="notice"></div></div></section>
+<section id="kontakt"><div class="container"><h2>KONTAKT</h2><p class="lead">Kontakt PREACHERS via jeres Discord.</p></div></section>
+<section id="adminLogin"><div class="container"><h2>ADMINPANEL</h2><p class="lead">Kun administratoren kan se ansøgninger, uploade billeder og administrere medlemmer.</p>
+<form id="loginForm"><input id="adminUser" placeholder="Admin brugernavn" required><input id="adminPass" type="password" placeholder="Adgangskode" required><button>LOG IND</button></form><div id="loginNotice" class="notice"></div>
+<div id="adminArea"><div class="adminbar"><button id="logoutBtn" class="danger">LOG UD</button><button id="refreshBtn">OPDATER</button></div>
+<h3>Upload billede</h3><form id="uploadForm"><input type="file" name="image" accept="image/*" required><button>UPLOAD TIL GALLERI</button></form><div id="uploadNotice" class="notice"></div>
+<h3 style="margin-top:35px">Opret medlem</h3><form id="memberForm"><input name="name" placeholder="Medlemmets navn" required><input name="rank" placeholder="Rang / rolle" required><input type="file" name="image" accept="image/*"><button>OPRET MEDLEM</button></form><div id="memberNotice" class="notice"></div>
+<h3 style="margin-top:35px">Ansøgninger</h3><div id="applications"></div></div></div></section>
+<footer>PREACHERS © 2026 • FiveM/RP</footer>
+<script>
+const $=id=>document.getElementById(id);
+async function api(url,opt={}){const r=await fetch(url,{credentials:"same-origin",...opt});const t=await r.text();let d={};try{d=JSON.parse(t)}catch{}if(!r.ok)throw new Error(d.error||("Serverfejl "+r.status));return d}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]))}
+function notice(el,msg,good=false){el.textContent=msg;el.className="notice "+(good?"ok":"bad");el.style.display="block"}
+async function loadPublic(){try{const[m,g]=await Promise.all([api("/api/members"),api("/api/gallery")]);$("members").innerHTML=m.length?m.map(x=>`<div class="card">${x.image_url?`<img src="${x.image_url}">`:""}<h3>${esc(x.name)}</h3><p>${esc(x.rank)}</p></div>`).join(""):"<p>Ingen medlemmer endnu.</p>";$("gallery").innerHTML=g.length?g.map(x=>`<img src="${x.url}" onclick="window.open(this.src,'_blank')">`).join(""):"<p>Ingen billeder endnu.</p>"}catch(e){console.error(e)}}
+$("applicationForm").onsubmit=async e=>{e.preventDefault();try{const d=Object.fromEntries(new FormData(e.target));await api("/api/applications",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)});e.target.reset();notice($("appNotice"),"Ansøgningen er sendt. Hvis den bliver godkendt, får du en privat Discord-besked.",true)}catch(x){notice($("appNotice"),x.message)}};
+$("loginForm").onsubmit=async e=>{e.preventDefault();try{await api("/api/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({username:$("adminUser").value,password:$("adminPass").value})});$("adminArea").style.display="block";$("loginNotice").style.display="none";e.target.reset();await loadAdmin();$("adminArea").scrollIntoView({behavior:"smooth"})}catch(x){notice($("loginNotice"),x.message)}};
+async function loadAdmin(){try{const a=await api("/api/applications");$("applications").innerHTML=a.length?a.map(x=>`<div class="app"><h3>${esc(x.name)}</h3><p><b>Discord:</b> ${esc(x.discord||"-")} &nbsp; <b>User ID:</b> ${esc(x.discordId)}</p><p><b>Alder:</b> ${esc(x.age)}</p><p><b>Erfaring:</b> ${esc(x.experience)}</p><p><b>Hvorfor:</b> ${esc(x.why)}</p><p><b>Status:</b> ${esc(x.status)}</p><p><small>${esc(x.dmStatus||"")}</small></p><button onclick="setStatus(${x.id},'Godkendt')">GODKEND + SEND DISCORD</button><button class="danger" onclick="setStatus(${x.id},'Afvist')">AFVIS</button></div>`).join(""):"<p>Ingen ansøgninger endnu.</p>"}catch(x){notice($("loginNotice"),x.message)}}
+window.setStatus=async(id,s)=>{try{const d=await api("/api/applications/"+id,{method:"PATCH",headers:{"Content-Type":"application/json"},body:JSON.stringify({status:s})});alert(d.message||"Opdateret");await loadAdmin()}catch(x){alert(x.message)}};
+$("uploadForm").onsubmit=async e=>{e.preventDefault();try{await api("/api/gallery",{method:"POST",body:new FormData(e.target)});e.target.reset();notice($("uploadNotice"),"Billedet er uploadet.",true);await loadPublic()}catch(x){notice($("uploadNotice"),x.message)}};
+$("memberForm").onsubmit=async e=>{e.preventDefault();try{await api("/api/members",{method:"POST",body:new FormData(e.target)});e.target.reset();notice($("memberNotice"),"Medlemmet er oprettet.",true);await loadPublic()}catch(x){notice($("memberNotice"),x.message)}};
+$("logoutBtn").onclick=async()=>{await api("/api/logout",{method:"POST"});$("adminArea").style.display="none"};
+$("refreshBtn").onclick=async()=>{await loadPublic();await loadAdmin()};loadPublic();
+</script></body></html>
